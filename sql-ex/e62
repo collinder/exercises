@@ -1,0 +1,5 @@
+:load start
+income_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('inc).as("inc")).join(outcome_o.agg(sum('out).as("out"))).select(coalesce('inc, lit(0)) - coalesce('out, lit(0)))
+income_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('inc).as("inc")).join(outcome_o.agg(sum('out).as("out"))).select(coalesce('inc, lit(0)) - coalesce('out, lit(0)))
+income_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('inc).as("inc")).join(outcome_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('out).as("out"))).select(coalesce('inc, lit(0)) - coalesce('out, lit(0)))
+income_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('inc).as("inc")).join(outcome_o.filter(date_format('date, "M") < date_format(lit("2001-04-15"), "M")).agg(sum('out).as("out"))).select(coalesce('inc, lit(0)) - coalesce('out, lit(0))).show()

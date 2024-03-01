@@ -1,0 +1,4 @@
+:load start
+product.filter(col("model").rlike("^[0-9]+$")).show()
+product.filter(col("model").rlike("^[0-9]+$") || col("model").rlike("^[a-zA-Z]+$")).show()
+product.filter(col("model").rlike("^[0-9]+$") || col("model").rlike("^[a-zA-Z]+$")).select("model", "type").show()

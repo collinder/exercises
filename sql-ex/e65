@@ -1,0 +1,11 @@
+:load start
+val tipos = product.select('maker, 'type, when('type === "PC", 1).when('type === "Laptop", 2).otherwise(3))
+val tipos = product.select('maker, 'type, when('type === "PC", 1).when('type === "Laptop", 2).otherwise(3)).show()
+val tipos = product.select('maker, 'type, when('type === "PC", 1).when('type === "Laptop", 2).otherwise(3))
+val tipos = product.select('maker, 'type, when('type === "PC", 1).when('type === "Laptop", 2).otherwise(3).as("tiposs"))
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)))
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)).as("id")).show()
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)).as("id"), lag('maker, 1).over(Window.orderBy('maker))).show()
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)).as("id"), lag('maker, 1).over(Window.orderBy('maker)), 'type).show()
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)).as("id"), when('maker === lag('maker, 1).over(Window.orderBy('maker)), "").otherwise('maker)).show()
+tipos.select(row_number().over(Window.orderBy('maker, 'tiposs)).as("id"), when('maker === lag('maker, 1).over(Window.orderBy('maker)), "").otherwise('maker), 'type).show()

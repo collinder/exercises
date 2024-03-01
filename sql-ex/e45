@@ -1,0 +1,3 @@
+:load start
+val gra = ships.select("name").union(outcomes.select('ship.as("name")))
+gra.filter('name.rlike("^.* .* .*$")).show()

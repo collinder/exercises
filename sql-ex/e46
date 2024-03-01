@@ -1,0 +1,8 @@
+:load start
+val a = outcomes.join(ships, 'ship==='name, "left")
+val a = outcomes.join(ships, 'ship==='name, "left").filter('battle==="Guadalcanal").show()
+val a = outcomes.join(ships, 'ship==='name, "left").filter('battle==="Guadalcanal").select('ship.as("name"), coalesce('class, 'ship).as("class"), 'battle)
+val a = outcomes.join(ships, 'ship==='name, "left").filter('battle==="Guadalcanal").select('ship.as("name"), coalesce('class, 'ship).as("class"), 'battle).show()
+val a = outcomes.join(ships, 'ship==='name, "left").filter('battle==="Guadalcanal").select('ship.as("name"), coalesce('class, 'ship).as("class"), 'battle)
+a.join(classes, Seq("class"), "left").select('name, 'displacement, 'numGuns)
+a.join(classes, Seq("class"), "left").select('name, 'displacement, 'numGuns).show()

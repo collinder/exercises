@@ -1,0 +1,7 @@
+:load start
+val gran_union = outcomes.select(col("ship").as("name")).join(classes.select("class"), col("name") === col("class"))
+val gran_union = outcomes.select(col("ship").as("name")).join(classes.select("class"), col("name") === col("class")).union(ships.select("name", "class"))
+gran_union.show()
+gran_union.groupBy("class").count().filter(col("count")===1).
+show()
+gran_union.groupBy("class").count().filter(col("count")===1).select("class").show()

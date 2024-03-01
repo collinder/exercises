@@ -1,0 +1,5 @@
+:load start
+val izq = income.join(outcome, Seq("point","date"), "anti").groupBy('point, 'date).agg(sum('inc).as("sum"))
+val izq = income.join(outcome, Seq("point","date"), "anti").groupBy('point, 'date).agg(sum('inc).as("sum")).select('point, 'date, lit("inc").as("type"), 'sum)
+val der = outcome.join(income, Seq("point","date"), "anti").groupBy('point, 'date).agg(sum('out).as("sum")).select('point, 'date, lit("out").as("type"), 'sum)
+izq.union(der).show()

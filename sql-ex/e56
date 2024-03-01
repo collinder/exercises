@@ -1,0 +1,10 @@
+:load start
+val todo_barcos = ships.select('name,'class).union(outcomes.select('ship, 'ship)).show()
+val todo_barcos = ships.select('name,'class).union(outcomes.select('ship, 'ship))
+val hundida = todo_barcos.join(outcomes, 'name === 'ship).select('name, 'class, 'result)
+val hundida = todo_barcos.join(outcomes, 'name === 'ship).select('name, 'class, 'result).show()
+val hundida = todo_barcos.join(outcomes, 'name === 'ship).select('name, 'class, 'result)
+hundida.join(classes, Seq("class"), "right")
+hundida.join(classes, Seq("class"), "right").groupBy('class)
+hundida.join(classes, Seq("class"), "right").groupBy('class).agg(sum(when('result === "sunk", 1).otherwise(0)))
+hundida.join(classes, Seq("class"), "right").groupBy('class).agg(sum(when('result === "sunk", 1).otherwise(0))).show()

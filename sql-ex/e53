@@ -1,0 +1,5 @@
+:load start
+classes.filter('type === "bb").agg(avg('numGuns))
+classes.filter('type === "bb").agg(avg('numGuns)).show()
+classes.filter('type === "bb").agg(avg('numGuns).as("av")).select(round('av))
+classes.filter('type === "bb").agg(avg('numGuns).as("av")).select(round('av, 2)).show()

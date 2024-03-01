@@ -1,0 +1,11 @@
+:load e60
+val inco = income_o.filter(to_timestamp('date,"yyy-MM-dd HH:mm:ss") < date_format(lit("2001-04-15"),"M")).show()
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M")).show()
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M"))
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M")).select(year('date))
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M")).select(year('date), current_date())
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M"))
+val inco = income_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M")).groupBy('point).agg(sum('inc).as("inc"))
+val outco = outcome_o.filter(date_format('date,"M") < date_format(lit("2001-04-15"),"M")).groupBy('point).agg(sum('out).as("out"))
+inco.join(outco, Seq("point"), "left").select('point, coalesce('inc, lit(0)) - coalesce('out, lit(0)))
+inco.join(outco, Seq("point"), "left").select('point, coalesce('inc, lit(0)) - coalesce('out, lit(0))).show()

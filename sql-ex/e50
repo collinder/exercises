@@ -1,0 +1,3 @@
+:load start
+outcomes.join(ships, 'name === 'ship).filter('ship === "Kongo" || 'class === "Kongo").select('battle).distinct()
+outcomes.join(ships, 'name === 'ship).filter('ship === "Kongo" || 'class === "Kongo").select('battle).distinct().show()

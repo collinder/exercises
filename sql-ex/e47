@@ -1,0 +1,10 @@
+:load start
+val paises = classes.select('class.as("name"),'country).join(outcomes.select("ship"), 'name === 'ship, "semi")
+val paises = classes.select('class.as("name"),'country).join(outcomes.select("ship"), 'name === 'ship, "semi").show()
+val paises = classes.select('class.as("name"),'country).join(outcomes.select("ship"), 'name === 'ship, "semi").union(ships.join(classes, Seq("class")).select('name,'country))
+val paises = classes.select('class.as("name"),'country).join(outcomes.select("ship"), 'name === 'ship, "semi").union(ships.join(classes, Seq("class")).select('name,'country)).show()
+val paises = classes.select('class.as("name"),'country).join(outcomes.select("ship"), 'name === 'ship, "semi").union(ships.join(classes, Seq("class")).select('name,'country))
+paises.join(outcomes, 'name === 'ship && 'result === "sunk", "left")
+paises.join(outcomes, 'name === 'ship && 'result === "sunk", "left").groupBy('country).agg(count("*").as("cc"), count('ship).as("cs"))
+paises.join(outcomes, 'name === 'ship && 'result === "sunk", "left").groupBy('country).agg(count("*").as("cc"), count('ship).as("cs")).show()
+paises.join(outcomes, 'name === 'ship && 'result === "sunk", "left").groupBy('country).agg(count("*").as("cc"), count('ship).as("cs")).filter('cs === 'cc).select('country).show()

@@ -1,0 +1,5 @@
+:load start
+val necesaria = product.groupBy("maker","type").count().show()
+val necesaria = product.groupBy("maker","type").count()
+val necesaria = product.groupBy('maker,'type).count()
+necesaria.groupBy("maker").agg(first("type")).show()

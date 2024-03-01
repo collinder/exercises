@@ -1,0 +1,22 @@
+import readline
+from pyspark.sql.window import Window
+from pyspark.sql.functions import *
+utv = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/utV_.csv")
+ships = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Ships_.csv")
+income = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Income_.csv")
+trip = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Trip_.csv")
+product = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/product_.csv")
+pass_in_trip = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Pass_in_trip_.csv")
+outcome_o = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Outcome_o_.csv")
+income_o = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Income_o_.csv")
+outcomes = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Outcomes_.csv")
+utq = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/utQ_.csv")
+battles = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Battles_.csv")
+utb = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/utB_.csv")
+company = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Company_.csv")
+outcome = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Outcome_.csv")
+printer = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/printer_.csv")
+pc = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/pc_.csv")
+classes = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Classes_.csv")
+passenger = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/Passenger_.csv")
+laptop = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").option("delimiter", ",").load("/home/fziv/tables/laptop_.csv")

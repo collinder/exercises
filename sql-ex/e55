@@ -1,0 +1,2 @@
+:load start
+ships.join(classes, Seq("class"), "right").groupBy('class).agg(min('launched)).show()

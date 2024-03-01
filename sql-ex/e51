@@ -1,0 +1,10 @@
+:load start
+val todo_barcos = ships.select('name,'class).union(outcomes.select('ship, 'ship)).join(classes, Seq("class")).select('name,'numGuns,'displacement)
+todo_barcos.show()
+todo_barcos.groupBy('displacement).agg(max('numGuns)).show()
+todo_barcos.groupBy('displacement).agg(max('numGuns).as("max")).show()
+todo_barcos.join(todo_barcos.groupBy('displacement).agg(max('numGuns)), Seq("displacement"), "semi")
+todo_barcos.join(todo_barcos.groupBy('displacement).agg(max('numGuns)), Seq("displacement"), "semi").select("name").show()
+todo_barcos.join(todo_barcos.groupBy('displacement).agg(max('numGuns)), Seq("displacement"), "semi").select("name").show(false)
+todo_barcos.join(todo_barcos.groupBy('displacement).agg(max('numGuns)), Seq("displacement"), "semi").select("name").show(20, false)
+todo_barcos.join(todo_barcos.groupBy('displacement).agg(max('numGuns)), Seq("displacement"), "semi").select("name").show(50, false)

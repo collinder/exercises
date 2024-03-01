@@ -1,0 +1,7 @@
+:load start
+val passn = pass_in_trip.groupBy('id_psg, 'place).agg(count('*).as("co"))
+val passn = pass_in_trip.groupBy('id_psg, 'place).agg(count('*).as("co")).show()
+val passn = pass_in_trip.groupBy('id_psg, 'place).agg(count('*).as("co")).filter('co > 1).show()
+val passn = pass_in_trip.groupBy('id_psg, 'place).agg(count('*).as("co")).filter('co > 1).select('id_psg)
+passenger.join(passn, Seq("id_psg"), "semi").select("name")
+passenger.join(passn, Seq("id_psg"), "semi").select("name").show()

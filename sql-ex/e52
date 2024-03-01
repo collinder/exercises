@@ -1,0 +1,6 @@
+:load start
+ships.join(classes, Seq("class")).filter('country === "Japan" || 'country.isNull)
+ships.join(classes, Seq("class")).filter('country === "Japan" || 'country.isNull).show()
+ships.join(classes, Seq("class")).filter('country === "Japan" || 'country.isNull).filter('type === "bb" || 'type.isNull).filter('numGuns >= 9 || 'numGuns.isNull).filter('bore < 19 || 'bore.isNull).filter('displacement <= 65000 || 'displacement.isNull)
+ships.join(classes, Seq("class")).filter('country === "Japan" || 'country.isNull).filter('type === "bb" || 'type.isNull).filter('numGuns >= 9 || 'numGuns.isNull).filter('bore < 19 || 'bore.isNull).filter('displacement <= 65000 || 'displacement.isNull).show()
+ships.join(classes, Seq("class")).filter('country === "Japan" || 'country.isNull).filter('type === "bb" || 'type.isNull).filter('numGuns >= 9 || 'numGuns.isNull).filter('bore < 19 || 'bore.isNull).filter('displacement <= 65000 || 'displacement.isNull).select('name).show()

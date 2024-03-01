@@ -1,0 +1,7 @@
+:load start
+outcomes.filter(col("battle")==="North Atlantic").show()
+outcomes.filter(col("battle")==="North Atlantic" || col("result")==="sunk")
+outcomes.filter(col("battle")==="North Atlantic" || col("result")==="sunk").show()
+outcomes.filter(col("battle")==="North Atlantic" && col("result")==="sunk").show()
+outcomes.filter(col("battle")==="North Atlantic" && col("result")==="sunk").select("ship")
+outcomes.filter(col("battle")==="North Atlantic" && col("result")==="sunk").select("ship").show()

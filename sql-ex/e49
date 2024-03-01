@@ -1,0 +1,4 @@
+:load start
+ships.join(classes, Seq("class")).filter('bore === 16).select('name)
+ships.join(classes, Seq("class")).filter('bore === 16).select('name).union(outcomes.join(classes, 'ship === 'class).filter('bore === 16).select('ship.as("name")))
+ships.join(classes, Seq("class")).filter('bore === 16).select('name).union(outcomes.join(classes, 'ship === 'class).filter('bore === 16).select('ship.as("name"))).show()

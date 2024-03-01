@@ -1,0 +1,6 @@
+:load start
+val dos = outcomes.join(battles, col("name") === col("battle")).select("ship","date","result")
+dos.filter(col("result")==="damaged")
+dos.as("d").filter(col("result")==="damaged").join(dos.as("do"), col("do.date") > col("d.date") && col("do.ship") === col("d.ship"))
+dos.as("d").filter(col("result")==="damaged").join(dos.as("do"), col("do.date") > col("d.date") && col("do.ship") === col("d.ship"), "semi").select("ship").distinct()
+dos.as("d").filter(col("result")==="damaged").join(dos.as("do"), col("do.date") > col("d.date") && col("do.ship") === col("d.ship"), "semi").select("ship").distinct().show()

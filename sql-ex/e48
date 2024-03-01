@@ -1,0 +1,5 @@
+:load start
+classes.join(outcomes, 'class === 'ship).filter('result === "sunk")
+classes.join(outcomes, 'class === 'ship).filter('result === "sunk").show()
+classes.join(outcomes, 'class === 'ship).filter('result === "sunk").select('class).union(ships.join(outcomes, 'ship === 'name).filter('result === "sunk").select('class))
+classes.join(outcomes, 'class === 'ship).filter('result === "sunk").select('class).union(ships.join(outcomes, 'ship === 'name).filter('result === "sunk").select('class)).show()

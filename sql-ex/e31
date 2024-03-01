@@ -1,0 +1,4 @@
+:load start
+classes.filter(classes("bore")>=16)
+classes.filter(classes("bore")>=16).select("class", "country")
+classes.filter(classes("bore")>=16).select("class", "country").show()

@@ -1,0 +1,11 @@
+:load start
+val mesa_grande = classes.filter('type === "bb").select('class,'numGuns).join(ships, Seq("class")).select('name, 'numGuns).show()
+val mesa_grande = classes.filter('type === "bb").join(ships, Seq("class")).select('name, 'numGuns).union(outcomes.select('ship.as("name")).join(classes, 'name === 'class).select('class, 'numGuns))
+val mesa_grande = classes.filter('type === "bb").join(ships, Seq("class")).select('name, 'numGuns).union(outcomes.select('ship.as("name")).join(classes, 'name === 'class).select('class, 'numGuns)).show()
+val mesa_grande = classes.filter('type === "bb").join(ships, Seq("class")).select('name, 'numGuns).union(outcomes.select('ship.as("name")).join(classes, 'name === 'class).select('class, 'numGuns))
+mesa_grande.agg(avg('numGuns))
+mesa_grande.agg(avg('numGuns)).show()
+import org.apache.spark.sql
+mesa_grande.agg(avg('numGuns.cast(sql.types.FloatType))).show()
+mesa_grande.agg(round(avg('numGuns.cast(sql.types.FloatType)))).show()
+mesa_grande.agg(round(avg('numGuns.cast(sql.types.FloatType)), 2)).show()

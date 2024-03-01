@@ -1,0 +1,12 @@
+:load start
+val puntos = income_o.show() 
+val puntos = income_o.join(outcome_o, Seq("point", "date"), "left").show()
+val puntos0 = income_o.join(outcome_o, Seq("point", "date"), "left")
+val puntos1 = outcome_o.join(income_o, Seq("point", "date"), "left")
+val puntos = puntos0.union(puntos1)
+puntos.show()
+val por_fecha = puntos.select('point, coalesce('inc, lit(0)) - coalesce('out, lit(0)))
+val por_fecha = puntos.select('point, (coalesce('inc, lit(0)) - coalesce('out, lit(0))).as("a"))
+val por_fecha = puntos.select('point, (coalesce('inc, lit(0)) - coalesce('out, lit(0))).as("Remain"))
+por_fecha.groupBy('point).agg(sum('Remain))
+por_fecha.groupBy('point).agg(sum('Remain)).show()
